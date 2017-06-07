@@ -94,4 +94,39 @@
             <argument name="pageObjects" xsi:type="object">Magento\AcceptanceTestFramework\Page\Config\Data</argument>
         </arguments>
     </type>
+
+    <!-- DataProfileSchema Demo -->
+
+    <virtualType name="Magento\AcceptanceTestFramework\Config\SchemaLocator\DataProfile" type="Magento\AcceptanceTestFramework\Config\SchemaLocator">
+        <arguments>
+            <argument name="schemaPath" xsi:type="string">Magento/AcceptanceTestFramework/DataGenerator/etc/DataProfileSchema.xsd</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Magento\AcceptanceTestFramework\Config\Reader\DataProfile" type="Magento\AcceptanceTestFramework\Config\Reader\Filesystem">
+        <arguments>
+            <argument name="fileResolver" xsi:type="object">Magento\AcceptanceTestFramework\Config\FileResolver\Module</argument>
+            <argument name="converter" xsi:type="object">Magento\AcceptanceTestFramework\Config\Converter</argument>
+            <argument name="schemaLocator" xsi:type="object">Magento\AcceptanceTestFramework\Config\SchemaLocator\DataProfile</argument>
+            <argument name="idAttributes" xsi:type="array">
+
+                <!--What goes here to make the parser read Magento/AcceptanceTestFramework/DataGenerator/etc/Sample.xml -->
+
+            </argument>
+            <argument name="fileName" xsi:type="string">Sample.xml</argument>
+            <argument name="defaultScope" xsi:type="string">etc</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Magento\AcceptanceTestFramework\DataProfile\Config\Data" type="Magento\AcceptanceTestFramework\Config\Data">
+        <arguments>
+            <argument name="reader" xsi:type="object">Magento\AcceptanceTestFramework\Config\Reader\DataProfile</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\AcceptanceTestFramework\DataProfileSchemaParser">
+        <arguments>
+            <argument name="dataProfiles" xsi:type="object">Magento\AcceptanceTestFramework\DataProfile\Config\Data</argument>
+        </arguments>
+    </type>
 </config>

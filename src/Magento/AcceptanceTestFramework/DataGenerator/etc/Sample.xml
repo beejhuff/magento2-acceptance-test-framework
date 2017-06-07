@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="DataProfileSchema.xsd">
+    <entities>
+        <entity>
+            <entityName>
+                CustomerEntityOne
+            </entityName>
+            <entityEnumeration>Website</entityEnumeration>
+            <dataObjects>
+                <dataObject>
+                    <dataObjectName>CustomerNumberOne</dataObjectName>
+                    <dataArray>
+                        <data key="FirstName" value="FirstName"/>
+                        <data key="LastName" value="LastName"/>
+                        <data key="Address" value="Address"/>
+                        <data key="DateOfBirth" value="01/01/1990"/>
+                    </dataArray>
+                    <asserts>
+                        <assert>AssertNumberOne</assert>
+                        <assert>AssertNumberTwo</assert>
+                    </asserts>
+                </dataObject>
+                <dataObject>
+                    <dataObjectName>CustomerNumberTwo</dataObjectName>
+                    <dataArray>
+                        <data key="FirstName" value="adsfsdf"/>
+                        <data key="LastName" value="fsdfs"/>
+                        <data key="Address" value="asdfasdfsdf"/>
+                    </dataArray>
+                    <asserts>
+                        <assert>AssertNumberOne</assert>
+                        <assert>AssertNumberTwo</assert>
+                        <assert>AssertNumberThree</assert>
+                    </asserts>
+                </dataObject>
+            </dataObjects>
+        </entity>
+    </entities>
+</config>
