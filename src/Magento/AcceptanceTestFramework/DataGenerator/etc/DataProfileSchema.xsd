@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-  <xs:simpleType name="entityEnum">
-    <xs:restriction base="xs:NMTOKEN">
-      <xs:enumeration value="Website"></xs:enumeration>
-      <xs:enumeration value="StoreGroup"></xs:enumeration>
-      <xs:enumeration value="StoreView"></xs:enumeration>
-      <xs:enumeration value="Category"></xs:enumeration>
-      <xs:enumeration value="SimpleProduct"></xs:enumeration>
-      <xs:enumeration value="ConfigurableProduct"></xs:enumeration>
-      <xs:enumeration value="Customer"></xs:enumeration>
-      <xs:enumeration value="Order"></xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
 
   <xs:element name="entities" type="entitiesArray">
     <xs:annotation>
@@ -43,10 +31,10 @@
           </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element type="entityEnum" name="entityEnumeration">
+      <xs:element type="xs:int" name="entityEnumeration">
         <xs:annotation>
           <xs:documentation>
-            Node containing Enumerator for the entity type. Used by Generators to interface with ORM.
+            Node containing Enumerator for the entity type. Actual enumeration restriction is checked via helper function in generator.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
