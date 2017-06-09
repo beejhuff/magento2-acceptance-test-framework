@@ -2,17 +2,12 @@
 
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="DataProfileSchema.xsd">
     <entities>
-        <entity>
-            <entityName>
-                CustomerEntityOne
-            </entityName>
-            <entityEnumeration>Website</entityEnumeration>
-            <configs>
-                <configName>ConfigurationName</configName>
-            </configs>
+        <entity name="CustomerEntityOne" type="Website">
+            <dataConfigs>
+                <name>ConfigurationName</name>
+            </dataConfigs>
             <dataObjects>
-                <dataObject>
-                    <dataObjectName>CustomerNumberOne</dataObjectName>
+                <dataObject dataObjectName="CustomerNumberOne">
                     <dataArray>
                         <data key="FirstName" value="FirstName"/>
                         <data key="LastName" value="LastName"/>
@@ -25,7 +20,6 @@
                     </asserts>
                 </dataObject>
                 <dataObject>
-                    <dataObjectName>CustomerNumberTwo</dataObjectName>
                     <dataArray>
                         <data key="FirstName" value="adsfsdf"/>
                         <data key="LastName" value="fsdfs"/>

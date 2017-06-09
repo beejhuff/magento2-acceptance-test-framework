@@ -20,25 +20,6 @@
     </xs:complexType>
   </xs:element>
 
-  <xs:element name="config">
-    <xs:annotation>
-      <xs:documentation>
-        The root element for configuration data.
-      </xs:documentation>
-    </xs:annotation>
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element ref="entities" maxOccurs="unbounded" minOccurs="1">
-          <xs:annotation>
-            <xs:documentation>
-              An element that contains configuration array containing all Entity elements.
-            </xs:documentation>
-          </xs:annotation>
-        </xs:element>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-
   <xs:element name="entities" type="entitiesArray">
     <xs:annotation>
       <xs:documentation>
