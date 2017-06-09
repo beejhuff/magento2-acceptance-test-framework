@@ -7,7 +7,7 @@
                 <name>ConfigurationName</name>
             </dataConfigs>
             <dataObjects>
-                <dataObject dataObjectName="CustomerNumberOne">
+                <dataObject name="CustomerNumberOne">
                     <dataArray>
                         <data key="FirstName" value="FirstName"/>
                         <data key="LastName" value="LastName"/>
