@@ -58,14 +58,14 @@
         </xs:annotation>
       </xs:element>
     </xs:sequence>
-      <xs:attribute type="xs:string" name="entityName">
+      <xs:attribute type="xs:string" name="name">
           <xs:annotation>
               <xs:documentation>
                   Name of the Entity.
               </xs:documentation>
           </xs:annotation>
       </xs:attribute>
-      <xs:attribute type="xs:string" name="entityType">
+      <xs:attribute type="xs:string" name="type">
           <xs:annotation>
               <xs:documentation>
                   Node containing the exact name of Entity type. Used later to find specific Persistence Layer Model class.
@@ -76,7 +76,7 @@
 
   <xs:complexType name="dataConfigsType">
     <xs:sequence>
-      <xs:element type="xs:string" maxOccurs="unbounded" name="dataConfigName">
+      <xs:element type="xs:string" maxOccurs="unbounded" name="name">
         <xs:annotation>
           <xs:documentation>
             Name of the Configuration.
