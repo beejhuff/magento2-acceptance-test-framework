@@ -85,7 +85,7 @@
                 <item name="/config/page/block/element" xsi:type="string">name</item>
             </argument>
             <argument name="fileName" xsi:type="string">Page.xml</argument>
-            <argument name="defaultScope" xsi:type="string">etc</argument>
+            <argument name="defaultScope" xsi:type="string">*/etc</argument>
         </arguments>
     </virtualType>
 
@@ -109,9 +109,7 @@
             <argument name="converter" xsi:type="object">Magento\AcceptanceTestFramework\Config\Converter</argument>
             <argument name="schemaLocator" xsi:type="object">Magento\AcceptanceTestFramework\Config\SchemaLocator\DataProfile</argument>
             <argument name="idAttributes" xsi:type="array">
-
-                <!--What goes here to make the parser read Magento/AcceptanceTestFramework/DataGenerator/etc/Sample.xml -->
-
+                <item name="/config/entities/entity/dataObjects/dataObject/dataArray/data" xsi:type="string">key</item>
             </argument>
             <argument name="fileName" xsi:type="string">Sample.xml</argument>
             <argument name="defaultScope" xsi:type="string">etc</argument>

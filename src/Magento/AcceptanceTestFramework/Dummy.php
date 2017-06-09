@@ -20,6 +20,6 @@ class Dummy
 
     public function readPageObjects()
     {
-        var_dump($this->pageObjects->get('page/AdminProduct'));
+        var_dump($this->pageObjects->get());
     }
 }
