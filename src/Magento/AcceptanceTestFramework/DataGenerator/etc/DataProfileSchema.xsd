@@ -41,21 +41,8 @@
   </xs:complexType>
 
   <xs:complexType name="entityType">
+
     <xs:sequence>
-      <xs:element type="xs:string" name="entityName">
-        <xs:annotation>
-          <xs:documentation>
-            Name of the Entity.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element type="xs:string" name="entityType">
-        <xs:annotation>
-          <xs:documentation>
-            Node containing the exact name of Entity type. Used later to find specific Persistence Layer Model class.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element type="dataConfigsType" name="dataConfigs">
         <xs:annotation>
           <xs:documentation>
@@ -71,6 +58,20 @@
         </xs:annotation>
       </xs:element>
     </xs:sequence>
+      <xs:attribute type="xs:string" name="entityName">
+          <xs:annotation>
+              <xs:documentation>
+                  Name of the Entity.
+              </xs:documentation>
+          </xs:annotation>
+      </xs:attribute>
+      <xs:attribute type="xs:string" name="entityType">
+          <xs:annotation>
+              <xs:documentation>
+                  Node containing the exact name of Entity type. Used later to find specific Persistence Layer Model class.
+              </xs:documentation>
+          </xs:annotation>
+      </xs:attribute>
   </xs:complexType>
 
   <xs:complexType name="dataConfigsType">
@@ -99,13 +100,6 @@
 
   <xs:complexType name="dataObjectType">
     <xs:sequence>
-      <xs:element type="xs:string" name="dataObjectName">
-        <xs:annotation>
-          <xs:documentation>
-            Name of the DataObject element.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element type="dataArrayType" name="dataArray">
         <xs:annotation>
           <xs:documentation>
@@ -121,6 +115,13 @@
         </xs:annotation>
       </xs:element>
     </xs:sequence>
+      <xs:attribute type="xs:string" name="dataObjectName">
+          <xs:annotation>
+              <xs:documentation>
+                  Name of the DataObject element.
+              </xs:documentation>
+          </xs:annotation>
+      </xs:attribute>
   </xs:complexType>
 
   <xs:complexType name="dataArrayType" mixed="true">
