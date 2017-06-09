@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+  <xs:element name="config">
+    <xs:annotation>
+      <xs:documentation>
+        The root element for configuration data.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="entities" maxOccurs="unbounded" minOccurs="1">
+          <xs:annotation>
+            <xs:documentation>
+              An element that contains configuration array containing all Entity elements.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 
   <xs:element name="entities" type="entitiesArray">
     <xs:annotation>
@@ -38,7 +56,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element type="configsType" name="configs">
+      <xs:element type="dataConfigsType" name="dataConfigs">
         <xs:annotation>
           <xs:documentation>
             Array containing all Configuration types.
@@ -55,9 +73,9 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="configsType">
+  <xs:complexType name="dataConfigsType">
     <xs:sequence>
-      <xs:element type="xs:string" maxOccurs="unbounded" name="configName">
+      <xs:element type="xs:string" maxOccurs="unbounded" name="dataConfigName">
         <xs:annotation>
           <xs:documentation>
             Name of the Configuration.
