@@ -6,7 +6,7 @@
         <dataConfig>simpleConfiguration</dataConfig>
         <dataConfig>regressionConfiguration</dataConfig>
         <dataObject name="Personal">
-            <data key="FirstName">FirstNameData</data>
+            <data key="firstName">asdf</data>
             <data key="LastName"/>
             <data key="Address"/>
             <data key="DateOfBirth"/>
