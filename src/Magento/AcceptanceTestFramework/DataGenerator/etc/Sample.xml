@@ -1,37 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="DataProfileSchema.xsd">
-    <entities>
-        <entity name="CustomerEntityOne" type="Website">
-            <dataConfigs>
-                <name>ConfigurationName</name>
-            </dataConfigs>
-            <dataObjects>
-                <dataObject name="CustomerNumberOne">
-                    <dataArray>
-                        <data key="FirstName" value="FirstName"/>
-                        <data key="LastName" value="LastName"/>
-                        <data key="Address" value="Address"/>
-                        <data key="DateOfBirth" value="01/01/1990"/>
-                    </dataArray>
-                    <asserts>
-                        <assert>AssertNumberOne</assert>
-                        <assert>AssertNumberTwo</assert>
-                    </asserts>
-                </dataObject>
-                <dataObject>
-                    <dataArray>
-                        <data key="FirstName" value="adsfsdf"/>
-                        <data key="LastName" value="fsdfs"/>
-                        <data key="Address" value="asdfasdfsdf"/>
-                    </dataArray>
-                    <asserts>
-                        <assert>AssertNumberOne</assert>
-                        <assert>AssertNumberTwo</assert>
-                        <assert>AssertNumberThree</assert>
-                    </asserts>
-                </dataObject>
-            </dataObjects>
-        </entity>
-    </entities>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="DataProfileSchema.xsd">
+    <entity name="CustomerEntityOne" type="Website">
+        <dataConfig>simpleConfiguration</dataConfig>
+        <dataConfig>regressionConfiguration</dataConfig>
+        <dataObject name="Personal">
+            <data key="firstName">asdf</data>
+            <data key="LastName"/>
+            <data key="Address"/>
+            <data key="DateOfBirth"/>
+            <assert>AssertNumberOne</assert>
+            <assert>AssertNumberTwo</assert>
+        </dataObject>
+        <dataObject name="Billing">
+            <data key="FirstName">FirstNameData</data>
+            <data key="LastName"/>
+            <data key="Address"/>
+            <assert>AssertNumberOne</assert>
+            <assert>AssertNumberTwo</assert>
+            <assert>AssertNumberThree</assert>
+        </dataObject>
+    </entity>
 </config>
