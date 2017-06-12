@@ -1,171 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-  <xs:element name="config">
-    <xs:annotation>
-      <xs:documentation>
-        The root element for configuration data.
-      </xs:documentation>
-    </xs:annotation>
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element ref="entities" maxOccurs="unbounded" minOccurs="1">
-          <xs:annotation>
+    <xs:element name="config">
+        <xs:annotation>
             <xs:documentation>
-              An element that contains configuration array containing all Entity elements.
+                The root element for configuration data.
             </xs:documentation>
-          </xs:annotation>
-        </xs:element>
-      </xs:sequence>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element type="entityType" name="entity" minOccurs="0" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation>
+                            An element that contains configuration array containing all Entity elements.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="entityType">
+        <xs:sequence>
+            <xs:element type="xs:string" name="dataConfig" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>
+                        DataConfig elements.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element type="dataObjectType" name="dataObject" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>
+                        DataObject elements.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="name">
+            <xs:annotation>
+                <xs:documentation>
+                    Name of the Entity.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" name="type">
+            <xs:annotation>
+                <xs:documentation>
+                    Node containing the exact name of Entity type. Used later to find specific Persistence Layer Model
+                    class.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
     </xs:complexType>
-  </xs:element>
 
-  <xs:element name="entities" type="entitiesArray">
-    <xs:annotation>
-      <xs:documentation>
-        Array containing all Entity elements.
-      </xs:documentation>
-    </xs:annotation>
-  </xs:element>
+    <xs:complexType name="dataObjectType">
+        <xs:sequence>
+            <xs:element name="data" type="dataType" maxOccurs="unbounded" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>
+                        Element containing Data/Value pair.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="assert" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>
+                        Name of Assert.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="name">
+            <xs:annotation>
+                <xs:documentation>
+                    Name of the DataObject element.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
 
-  <xs:complexType name="entitiesArray">
-    <xs:sequence>
-      <xs:element type="entityType" name="entity">
-        <xs:annotation>
-          <xs:documentation>
-            Contains Entity Element, that have EntityName, EntityEnumerator, ConfigArray and DataObjectsArray.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="entityType">
-
-    <xs:sequence>
-      <xs:element type="dataConfigsType" name="dataConfigs">
-        <xs:annotation>
-          <xs:documentation>
-            Array containing all Configuration types.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element type="dataObjectsArray" name="dataObjects">
-        <xs:annotation>
-          <xs:documentation>
-            Array containing all DataObject elements.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-      <xs:attribute type="xs:string" name="name">
-          <xs:annotation>
-              <xs:documentation>
-                  Name of the Entity.
-              </xs:documentation>
-          </xs:annotation>
-      </xs:attribute>
-      <xs:attribute type="xs:string" name="type">
-          <xs:annotation>
-              <xs:documentation>
-                  Node containing the exact name of Entity type. Used later to find specific Persistence Layer Model class.
-              </xs:documentation>
-          </xs:annotation>
-      </xs:attribute>
-  </xs:complexType>
-
-  <xs:complexType name="dataConfigsType">
-    <xs:sequence>
-      <xs:element type="xs:string" maxOccurs="unbounded" name="name">
-        <xs:annotation>
-          <xs:documentation>
-            Name of the Configuration.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="dataObjectsArray">
-    <xs:sequence>
-      <xs:element type="dataObjectType" name="dataObject" maxOccurs="unbounded">
-        <xs:annotation>
-          <xs:documentation>
-            DataObject element, contains DataObjectName, Array of Data elements, and an Array of Asserts.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="dataObjectType">
-    <xs:sequence>
-      <xs:element type="dataArrayType" name="dataArray">
-        <xs:annotation>
-          <xs:documentation>
-            Array containing all Data Key/Value pairs.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element type="assertsType" name="asserts">
-        <xs:annotation>
-          <xs:documentation>
-            Array containing all Assert elements.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-      <xs:attribute type="xs:string" name="name">
-          <xs:annotation>
-              <xs:documentation>
-                  Name of the DataObject element.
-              </xs:documentation>
-          </xs:annotation>
-      </xs:attribute>
-  </xs:complexType>
-
-  <xs:complexType name="dataArrayType" mixed="true">
-    <xs:sequence>
-      <xs:element type="dataType" name="data" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation>
-            Array of all Data Key/Value pairs.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="dataType">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
+    <xs:complexType name="dataType">
         <xs:attribute type="xs:string" name="key" use="optional">
-          <xs:annotation>
-            <xs:documentation>
-              Key attribute of data/value pair.
-            </xs:documentation>
-          </xs:annotation>
+            <xs:annotation>
+                <xs:documentation>
+                    Key attribute of data/value pair.
+                </xs:documentation>
+            </xs:annotation>
         </xs:attribute>
-        <xs:attribute type="xs:string" name="value" use="optional">
-          <xs:annotation>
-            <xs:documentation>
-              Value attribute of data/value pair.
-            </xs:documentation>
-          </xs:annotation>
-        </xs:attribute>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-
-  <xs:complexType name="assertsType">
-    <xs:sequence>
-      <xs:element name="assert" type="xs:string" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation>
-            Name of Assert.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
+    </xs:complexType>
 </xs:schema>
