@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../DataGenerator/etc/DataProfileSchema.xsd">
+        <entity name="CustomerEntityOne" type="Website">
+            <dataConfig>simpleConfiguration</dataConfig>
+            <dataConfig>regressionConfiguration</dataConfig>
+              <dataObject name="Personal">
+                 <data key="FirstName">FirstNameData</data>
+                 <data key="LastName">LastName</data>
+                 <data key="Address">Address</data>
+                 <data key="DateOfBirth">01/01/1990</data>
+                 <assert>AssertNumberOne</assert>
+                 <assert>AssertNumberTwo</assert>
+              </dataObject>
+              <dataObject name="Billing">
+                 <data key="FirstName">adsfsdf</data>
+                 <data key="LastName">fsdfs</data>
+                 <data key="Address">asdfasdfsdf</data>
+                 <assert>AssertNumberOne</assert>
+                 <assert>AssertNumberTwo</assert>
+                 <assert>AssertNumberThree</assert>
+               </dataObject>
+        </entity>
+</config>
