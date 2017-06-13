@@ -3,5 +3,7 @@
 require_once 'bootstrap.php';
 
 /** @var Magento\AcceptanceTestFramework\Dummy $dummy */
-$dummy = $objectManager->create(\Magento\AcceptanceTestFramework\Dummy::class);
-$dummy->readPageObjects();
+$dummy = new Magento\AcceptanceTestFramework\DataGenerator\DataHandler('test');
+$results = $dummy->generateData();
+
+print_r($results);

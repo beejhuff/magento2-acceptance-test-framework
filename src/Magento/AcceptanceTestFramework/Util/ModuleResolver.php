@@ -48,7 +48,7 @@ class ModuleResolver
      */
     public function getModulesPath()
     {
-        $modulePath = BP . '/src/Magento/AcceptanceTestFramework/Page';
+        $modulePath = BP . '/src/Magento/AcceptanceTestFramework/DataProfile';
         $allModulePaths = glob($modulePath . '/*');
 
         return $allModulePaths;

@@ -1,3 +1,8 @@
 .idea
 composer.phar
 vendor/*
+entryPoint.php
+etc/di.xml
+src/Magento/AcceptanceTestFramework/Util/ModuleResolver.php
+src/Magento/AcceptanceTestFramework/DataProfile/Test/etc/Sample.xml
+src/Magento/AcceptanceTestFramework/DataProfileSchemaParser.php
