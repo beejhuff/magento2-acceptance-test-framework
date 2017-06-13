@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: imeron
- * Date: 6/9/17
- * Time: 11:50 AM
- */
 
 namespace Magento\AcceptanceTestFramework\DataGenerator\Objects;
 
