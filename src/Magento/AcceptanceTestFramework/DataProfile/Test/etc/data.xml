@@ -3,9 +3,9 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="../../../DataGenerator/etc/DataProfileSchema.xsd">
     <entity name="CustomerEntityOne" type="Customer">
-        <dataConfig>simpleConfiguration</dataConfig>
-        <dataConfig>regressionConfiguration</dataConfig>
-        <dataObject name="Personal">
+        <scenario>simpleConfiguration</scenario>
+        <scenario>regressionConfiguration</scenario>
+        <fieldGroup name="Personal">
             <data key="FirstName">FirstNameData</data>
             <data key="LastName">LastName</data>
             <data key="Address">address</data>
@@ -13,18 +13,18 @@
             <data key="Email">apitest@mgail.com</data>
             <assert>AssertNumberOne</assert>
             <assert>AssertNumberTwo</assert>
-        </dataObject>
-        <dataObject name="Billing">
+        </fieldGroup>
+        <fieldGroup name="Billing">
             <data key="customattributes">adsfsdf</data>
             <assert>AssertNumberOne</assert>
             <assert>AssertNumberTwo</assert>
             <assert>AssertNumberThree</assert>
-        </dataObject>
+        </fieldGroup>
     </entity>
     <entity name="CustomerEntityTwo" type="Customer">
-        <dataConfig>simpleConfiguration</dataConfig>
-        <dataConfig>regressionConfiguration</dataConfig>
-        <dataObject name="Personal">
+        <scenario>simpleConfiguration</scenario>
+        <scenario>regressionConfiguration</scenario>
+        <fieldGroup name="Personal">
             <data key="firstname">FirstNameData12</data>
             <data key="lastname">LastName12</data>
             <data key="createdAt">2017-06-12 14:00:00</data>
@@ -34,6 +34,6 @@
             <data key="websiteId">0</data>
             <assert>AssertNumberOne</assert>
             <assert>AssertNumberTwo</assert>
-        </dataObject>
+        </fieldGroup>
     </entity>
 </config>
