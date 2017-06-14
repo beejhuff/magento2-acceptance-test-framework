@@ -12,6 +12,7 @@ use Magento\AcceptanceTestFramework\DataGenerator\Objects\EntityXmlObject;
 use Magento\AcceptanceTestFramework\DataProfileSchemaParser;
 use Magento\AcceptanceTestFramework\ObjectManagerFactory;
 
+
 class DataHandler
 {
     private $moduleName;
@@ -59,4 +60,18 @@ class DataHandler
 
     }
 
+    public function apiData($entityNames)
+    {
+        $entityObjects = $this->generateData(true);
+        $relevantEntities = array_intersect_key($entityObjects, array_flip($entityNames));
+
+        foreach ($relevantEntities as $relevantEntity)
+        {
+            $apiClass = 'Magento\\AcceptanceTestFramework\\DataGenerator\\DataModel\\ApiModel\\'.$relevantEntity->type;
+            $apiObject = new $apiClass($relevantEntity);
+
+
+            //use HTTP client to use $apiObject->create();
+        }
+    }
 }
