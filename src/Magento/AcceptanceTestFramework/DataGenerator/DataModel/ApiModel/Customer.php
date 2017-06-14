@@ -1,58 +1,45 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: kkozan
- * Date: 6/13/17
- * Time: 11:30 AM
- */
 namespace Magento\AcceptanceTestFramework\DataGenerator\DataModel\ApiModel;
 
-class Customer implements \Magento\AcceptanceTestFramework\DataGenerator\DataModel\EntityPersistenceInterface
+use Magento\AcceptanceTestFramework\DataGenerator\DataModel\AbstractApiEntityPersistenceInterface;
+
+class Customer extends AbstractApiEntityPersistenceInterface
 {
     private $entityObject;
-    public $json;
-    private $specialDefinitions = ["address", "customattributes"];
+    private static $specialDefinitions = ["address", "customattributes"];
 
     public function __construct($entityObject)
     {
         $this->entityObject = $entityObject;
-        $this->createJson();
+        parent::__construct($entityObject);
     }
 
-    public function create()
+    protected function getJsonBody()
     {
-        // TODO: Implement create() method.
-    }
+        $data = $this->entityObject->data;
 
-    public function delete()
-    {
-        // TODO: Implement delete() method.
+        foreach(self::$specialDefinitions as $specialKey)
+        {
+            if(array_key_exists($specialKey, $data))
+            {
+                // logic to handle special case (new obj?)
+            }
+        }
+
+        $entityArray = [
+            strtolower($this->entityObject->type) => $data
+        ];
+        $json = \GuzzleHttp\json_encode($entityArray);
+
+        return $json;
     }
 
     /**
-     * Generates Json from $entityObject's data array, then assigns $json to the result.
+     * @return string
      */
-    public function createJson()
+    protected function getRequestUri()
     {
-        $array = array();
-        $data = $this->entityObject->data;
-        $data = array_change_key_case($data, CASE_LOWER);
-
-        foreach ($data as $key => $value) {
-            if (in_array($key, $this->specialDefinitions))
-            {
-                // TODO: Implement data specific solution for special definitions. Something like switch statements dependant on the array declared above.
-            }
-            else
-            {
-                $array[$key] = $value;
-            }
-        }
-        $entityArray = [
-            strtolower($this->entityObject->type) => $array
-        ];
-        $json = \GuzzleHttp\json_encode($entityArray);
-        $this->json = $json;
+        return 'customers/1';
     }
 }

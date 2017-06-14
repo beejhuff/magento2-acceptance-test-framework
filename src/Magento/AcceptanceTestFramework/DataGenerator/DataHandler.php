@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: imeron
- * Date: 6/9/17
- * Time: 11:30 AM
- */
 
 namespace Magento\AcceptanceTestFramework\DataGenerator;
 
@@ -17,6 +11,7 @@ class DataHandler
 {
     private $moduleName;
     private $objectManager;
+    const apiClassPath = "Magento\AcceptanceTestFramework\DataGenerator\DataModel\ApiModel";
 
     public function __construct($moduleName)
     {
@@ -48,30 +43,24 @@ class DataHandler
         return $entityObjects;
     }
 
-    public function persistData($entityNames)
+    public function persistData($entityNames, $inputMethod)
     {
         $entityObjects = $this->generateData(true);
         $relevantEntities = array_intersect_key($entityObjects, array_flip($entityNames));
 
         foreach ($relevantEntities as $relevantEntity)
         {
-            //magic to persist entity
+            if ($inputMethod == 'API')
+            {
+                return $this->createApiModel($relevantEntity)->create();
+            }
         }
-
     }
 
-    public function apiData($entityNames)
+    private function createApiModel($entity)
     {
-        $entityObjects = $this->generateData(true);
-        $relevantEntities = array_intersect_key($entityObjects, array_flip($entityNames));
-
-        foreach ($relevantEntities as $relevantEntity)
-        {
-            $apiClass = 'Magento\\AcceptanceTestFramework\\DataGenerator\\DataModel\\ApiModel\\'.$relevantEntity->type;
-            $apiObject = new $apiClass($relevantEntity);
-
-
-            //use HTTP client to use $apiObject->create();
-        }
+        $apiClass = self::apiClassPath . "\\" . $entity->type;
+        $apiObject = new $apiClass($entity);
+        return $apiObject;
     }
 }

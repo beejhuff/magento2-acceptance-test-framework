@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: kkozan
- * Date: 6/13/17
- * Time: 11:44 AM
- */
 namespace Magento\AcceptanceTestFramework\DataGenerator\DataModel;
 
 interface EntityPersistenceInterface
