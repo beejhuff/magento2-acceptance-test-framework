@@ -17,7 +17,7 @@ class Customer extends AbstractApiEntityPersistenceInterface
 
     protected function getJsonBody()
     {
-        $data = $this->entityObject->data;
+        $data = $this->entityObject->getData();
 
         foreach(self::$specialDefinitions as $specialKey)
         {
@@ -29,7 +29,7 @@ class Customer extends AbstractApiEntityPersistenceInterface
 
 
         $entityArray = [
-            strtolower($this->entityObject->type) => $data,
+            strtolower($this->entityObject->getType()) => $data,
             'passwordHash' => 'someHash'
         ];
         $json = \GuzzleHttp\json_encode($entityArray);

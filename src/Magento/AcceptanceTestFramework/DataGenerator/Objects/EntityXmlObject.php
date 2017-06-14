@@ -13,11 +13,11 @@ use Magento\AcceptanceTestFramework\DataGenerator\DataGeneratorXMLConstants;
 
 class EntityXmlObject
 {
-    public $name;
-    public $type;
-    public $dataConfigs = array();
-    public $dataObjects = array(); //array of data objects map of DataObject Name to actual Data Name
-    public $data = array(); //array of Data Name to Data Value
+    private $name;
+    private $type;
+    private $dataConfigs = array();
+    private $fieldGroups = array(); //array of data objects map of DataObject Name to actual Data Name
+    private $data = array(); //array of Data Name to Data Value
 
 
     function __construct($entityName, $entityType, $dataConfigs, $dataObjects)
@@ -30,26 +30,46 @@ class EntityXmlObject
             $this->dataConfigs[] = $dataConfig[DataGeneratorXMLConstants::DATA_CONFIG_VALUE];
         }
 
-        foreach ($dataObjects as $dataObjectName => $dataObject)
+        foreach ($dataObjects as $fieldGroupName => $fieldGroupObject)
         {
-            $dataNames = array(); // array to store names of data per dataObject
+            $dataNames = array(); // array to store names of data per fieldGroupObject
             $assertions = array(); // array to store assertions
 
-            foreach($dataObject[DataGeneratorXMLConstants::DATA_OBJECT_DATA] as $dataElement)
+            foreach($fieldGroupObject[DataGeneratorXMLConstants::DATA_OBJECT_DATA] as $dataElement)
             {
                 $dataNames[] = $dataElement[DataGeneratorXMLConstants::DATA_ELEMENT_KEY];
                 $this->data[$dataElement[DataGeneratorXMLConstants::DATA_ELEMENT_KEY]] = $dataElement[DataGeneratorXMLConstants::DATA_ELEMENT_VALUE];
             }
 
-            foreach($dataObject[DataGeneratorXMLConstants::DATA_OBJECT_ASSERTS] as $assertion)
+            foreach($fieldGroupObject[DataGeneratorXMLConstants::DATA_OBJECT_ASSERTS] as $assertion)
             {
                 $assertions[] = $assertion[DataGeneratorXMLConstants::ASSERT_VALUE];
             }
 
 
-            $dataXmlObject = new DataXmlObject($dataObjectName, $assertions, $dataNames);
-            $this->dataObjects[$dataXmlObject->name] = $dataXmlObject;
+            $fieldGroupXmlObject = new FieldGroupXmlObject($fieldGroupName, $assertions, $dataNames);
+            $this->fieldGroups[$fieldGroupXmlObject->getName()] = $fieldGroupXmlObject;
         }
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    public function getFieldGroups()
+    {
+        return $this->fieldGroups;
+    }
+
+    public function getData()
+    {
+        return $this->data;
     }
 
 }

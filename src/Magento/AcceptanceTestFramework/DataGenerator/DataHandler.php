@@ -32,7 +32,7 @@ class DataHandler
 
             if ($mapEntities)
             {
-                $entityObjects[$entityXmlObject->name] = $entityXmlObject;
+                $entityObjects[$entityXmlObject->getName()] = $entityXmlObject;
             }
             else
             {
@@ -59,7 +59,7 @@ class DataHandler
 
     private function createApiModel($entity)
     {
-        $apiClass = self::apiClassPath . "\\" . $entity->type;
+        $apiClass = self::apiClassPath . "\\" . $entity->getType();
         $apiObject = new $apiClass($entity);
         return $apiObject;
     }

@@ -26,7 +26,7 @@ abstract class AbstractApiEntityPersistenceInterface implements EntityPersistenc
         if (!self::$guzzle_client)
         {
             self::$guzzle_client = new Client([
-                'base_uri' => 'http://127.0.0.1:8080/rest/V1/',
+                'base_uri' => 'http://' . getenv("HOSTNAME") . ':' . getenv("PORT") . '/rest/V1/',
                 'timeout' => 30.0,
             ]);
         }
