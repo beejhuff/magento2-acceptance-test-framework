@@ -27,8 +27,10 @@ class Customer extends AbstractApiEntityPersistenceInterface
             }
         }
 
+
         $entityArray = [
-            strtolower($this->entityObject->type) => $data
+            strtolower($this->entityObject->type) => $data,
+            'passwordHash' => 'someHash'
         ];
         $json = \GuzzleHttp\json_encode($entityArray);
 
