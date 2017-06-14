@@ -23,17 +23,17 @@
 
     <xs:complexType name="entityType">
         <xs:sequence>
-            <xs:element type="xs:string" name="dataConfig" minOccurs="0" maxOccurs="unbounded">
+            <xs:element type="xs:string" name="scenario" minOccurs="0" maxOccurs="unbounded">
                 <xs:annotation>
                     <xs:documentation>
                         DataConfig elements.
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element type="dataObjectType" name="dataObject" minOccurs="0" maxOccurs="unbounded">
+            <xs:element type="fieldGroupType" name="fieldGroup" minOccurs="0" maxOccurs="unbounded">
                 <xs:annotation>
                     <xs:documentation>
-                        DataObject elements.
+                        FieldGroup elements, contains data pairs and asserts.
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
@@ -55,7 +55,7 @@
         </xs:attribute>
     </xs:complexType>
 
-    <xs:complexType name="dataObjectType">
+    <xs:complexType name="fieldGroupType">
         <xs:sequence>
             <xs:element name="data" type="dataType" maxOccurs="unbounded" minOccurs="0">
                 <xs:annotation>
