@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: imeron
- * Date: 6/9/17
- * Time: 11:50 AM
- */
 
 namespace Magento\AcceptanceTestFramework\DataGenerator\Objects;
-
 
 use Magento\AcceptanceTestFramework\DataGenerator\DataGeneratorXMLConstants;
 
@@ -20,29 +13,26 @@ class EntityXmlObject
     private $data = array(); //array of Data Name to Data Value
 
 
-    function __construct($entityName, $entityType, $dataConfigs, $dataObjects)
+    public function __construct($entityName, $entityType, $dataConfigs, $dataObjects)
     {
         $this->name = $entityName;
         $this->type = $entityType;
 
-        foreach ($dataConfigs as $dataConfig)
-        {
+        foreach ($dataConfigs as $dataConfig) {
             $this->dataConfigs[] = $dataConfig[DataGeneratorXMLConstants::DATA_CONFIG_VALUE];
         }
 
-        foreach ($dataObjects as $fieldGroupName => $fieldGroupObject)
-        {
+        foreach ($dataObjects as $fieldGroupName => $fieldGroupObject) {
             $dataNames = array(); // array to store names of data per fieldGroupObject
             $assertions = array(); // array to store assertions
 
-            foreach($fieldGroupObject[DataGeneratorXMLConstants::DATA_OBJECT_DATA] as $dataElement)
-            {
+            foreach ($fieldGroupObject[DataGeneratorXMLConstants::DATA_OBJECT_DATA] as $dataElement) {
                 $dataNames[] = $dataElement[DataGeneratorXMLConstants::DATA_ELEMENT_KEY];
-                $this->data[$dataElement[DataGeneratorXMLConstants::DATA_ELEMENT_KEY]] = $dataElement[DataGeneratorXMLConstants::DATA_ELEMENT_VALUE];
+                $this->data[$dataElement[DataGeneratorXMLConstants::DATA_ELEMENT_KEY]] =
+                    $dataElement[DataGeneratorXMLConstants::DATA_ELEMENT_VALUE];
             }
 
-            foreach($fieldGroupObject[DataGeneratorXMLConstants::DATA_OBJECT_ASSERTS] as $assertion)
-            {
+            foreach ($fieldGroupObject[DataGeneratorXMLConstants::DATA_OBJECT_ASSERTS] as $assertion) {
                 $assertions[] = $assertion[DataGeneratorXMLConstants::ASSERT_VALUE];
             }
 
@@ -71,5 +61,4 @@ class EntityXmlObject
     {
         return $this->data;
     }
-
 }

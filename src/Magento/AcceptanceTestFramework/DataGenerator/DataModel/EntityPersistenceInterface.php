@@ -10,7 +10,6 @@ interface EntityPersistenceInterface
      */
     public function __construct($entityObject);
 
-
     /**
      * Inserts entity record.
      * @return mixed

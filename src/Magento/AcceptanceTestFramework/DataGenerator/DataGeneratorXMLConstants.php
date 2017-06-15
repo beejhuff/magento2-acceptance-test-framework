@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: imeron
- * Date: 6/12/17
- * Time: 6:45 PM
- */
 
 namespace Magento\AcceptanceTestFramework\DataGenerator;
 
@@ -24,5 +18,4 @@ class DataGeneratorXMLConstants
 
     const DATA_OBJECT_ASSERTS = 'assert';
     const ASSERT_VALUE = 'value';
-
 }

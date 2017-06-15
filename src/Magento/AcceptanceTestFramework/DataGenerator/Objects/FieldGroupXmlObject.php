@@ -9,7 +9,7 @@ class FieldGroupXmlObject
     private $assertions = array(); // Array of assertions
     private $dataNames = array(); // Array of data names
 
-    function __construct($dataObjectName, $assertions, $data)
+    public function __construct($dataObjectName, $assertions, $data)
     {
         $this->name = $dataObjectName;
         $this->assertions = $assertions;
@@ -30,5 +30,4 @@ class FieldGroupXmlObject
     {
         return $this->dataNames;
     }
-
 }
